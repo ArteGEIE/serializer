@@ -426,6 +426,10 @@ abstract class AbstractObjectNormalizer extends AbstractNormalizer
                     return null;
                 }
 
+                if ('' === $data && Type::BUILTIN_TYPE_ARRAY === $type->getBuiltinType()) {
+                    return [];
+                }
+
                 switch ($type->getBuiltinType()) {
                     case Type::BUILTIN_TYPE_BOOL:
                         // according to https://www.w3.org/TR/xmlschema-2/#boolean, valid representations are "false", "true", "0" and "1"
